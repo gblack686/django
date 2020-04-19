@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'comps/style.css' %}" />
+
+{% if latest_comparable_list %}
+    <ul>
+    {% for comparable in latest_comparable_list %}
+        <li><a href="{% url 'comps:detail' comparable.id %}">{{ comparable.comparable_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No comps are available.</p>
+{% endif %}
