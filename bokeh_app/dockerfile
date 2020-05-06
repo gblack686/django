@@ -1,0 +1,9 @@
+FROM fastgenomics/pandas
+RUN apk --update add --no-cache g++
+COPY . /app
+WORKDIR /app
+COPY requirements.txt /
+RUN pip install --no-cache-dir -U pip
+RUN pip install --no-cache-dir -r /requirements.txt
+RUN chmod 644 app.py
+CMD ["python","app.py"]
